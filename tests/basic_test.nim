@@ -61,7 +61,7 @@ suite "geoip":
     assert g.org_by_addr("8.8.8.8") == "AS15169 Google Inc."
     g.delete()
 
-  test "GeoIPASNumv6.dat":
-    let g = GeoIP("/usr/share/GeoIP/GeoIPASNumv6.dat")
-    assert g.org_by_addr_v6("2a00:1450:400b:c03::8b") == "AS15169 Google Inc."
-    g.delete()
+  # test "GeoIPASNumv6.dat":
+  #   let g = GeoIP("/usr/share/GeoIP/GeoIPASNumv6.dat")
+  #   assert g.org_by_addr_v6("2a00:1450:400b:c03::8b") == "AS15169 Google Inc."
+  #   g.delete()
