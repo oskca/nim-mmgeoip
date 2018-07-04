@@ -21,14 +21,16 @@
 static:
     import ospaths 
     let srcDir = parentDir(currentSourcePath())
-{.passC:"-I" & srcDir / "libGeoIP".}
-{.passC:"-DGEOIPDATADIR='\"NOTDEFINED\"' -DPACKAGE_VERSION='\"1.6.12\"'".}
 {.compile: srcDir / "libGeoIP/GeoIP.c".}
 {.compile: srcDir / "libGeoIP/GeoIPCity.c".}
 {.compile: srcDir / "libGeoIP/GeoIP_deprecated.c".}
 {.compile: srcDir / "libGeoIP/regionName.c".}
 {.compile: srcDir / "libGeoIP/timeZone.c".}
+
+{.passC:"-I" & srcDir / "libGeoIP".}
+{.passC:"-DGEOIPDATADIR='\"NOTDEFINED\"' -DPACKAGE_VERSION='\"1.6.12\"'".}
 when defined(windows):
+    {.passL:"-lws2_32".}
     {.compile: srcDir / "libGeoIP/pread.c".}
 
 from strutils import `%`
